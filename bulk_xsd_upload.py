@@ -28,9 +28,19 @@ def get_files(path,ext=('.xsd'):
         for f in files:
               if f.endswith(ext):
               file_list.append(os.path.join(root,f))
+    #returns list of all files with path
     return file_list
 
-
+def template_upload(filePath,urlIP='127.0.0.1:8000', mdcsUser='admin', mdcsPass='admin' ):
+    """ uploads an xsd template """
+    mdcsURL='http://127.0.0.1:8000' # your MDCS IP address
+    schema_data= "" #some string of loaded xsd
+    #TODO: finish payload
+    #TODO establish title as none type
+    payload = {"content" : [ schema_data], 
+               "filename" : [ '%s'], 
+               "hash"=["unkown"], 
+               "title":["%s"] } % 
 
 def main():
     list_xsd_filePaths=get_files(huddle_path)
