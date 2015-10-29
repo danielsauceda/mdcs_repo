@@ -5,9 +5,21 @@ import requests
 import logging
 
 
-huddle_path='/home/danielsauceda/Desktop/Materials_Data_Curation_Huddle'
-desktop_path='/home/danielsauceda/Desktop'
-xsd_path='/home/danielsauceda/huddle_xsd'
+
+HOME=os.path.expanduser('~')
+huddle_path=HOME+'/Desktop/Materials_Data_Curation_Huddle'
+desktop_path=HOME+'/Desktop'
+xsd_path=HOME+'/Desktop/huddle_xsd'
+
+def makeMyDirs(folder_path):
+    """ Take a list of folder names and make folders inside of a path """
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+        logging.debug("CREATED: " +folder_path)
+
+
+
+
 
 def get_files(path,ext=('.xsd'):
     """ gets all file files recursively that has a certain extenstion"""
@@ -17,20 +29,14 @@ def get_files(path,ext=('.xsd'):
               if f.endswith(ext):
               file_list.append(os.path.join(root,f))
     return file_list
-/home/danielsauceda/Desktop/pythons/mdcsScripts_2
-
-os.pat
 
 
 
 def main():
-    list=get_files(huddle_path)
-    for file_path in list:
+    list_xsd_filePaths=get_files(huddle_path)
+    for file_path in list_xsd_filePaths:
         shutil.copy(file_path,xsd_path)
     
-
-    requests.
-
 
 
 if __name__=="__main__":
